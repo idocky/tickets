@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\API\V1\HomeController::class, 'index'])->name('home');
-
+Route::resource('categories', '\App\Http\Controllers\API\V1\CategoriesController');

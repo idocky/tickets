@@ -27,4 +27,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+    protected $dontReport = [];
+
+    public function render($request, Throwable $exception)
+    {
+        return $this->prepareJsonResponse($request, $exception);
+    }
+
+    protected function prepareJsonResponse($request, Throwable $exception)
+    {
+        return response()->json([
+            'error' => 'Something went wrong',
+            'message' => $exception->getMessage()
+        ], 500);
+    }
 }
